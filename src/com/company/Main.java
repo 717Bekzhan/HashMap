@@ -6,16 +6,23 @@ import java.util.*;
 public class Main {
 
     public static void main(String[] args) {
-        //  Car деген класс тузунуз (Id, номер авто)
-        //Дагы бир класс тузунуз, ал класста машинанын данныйлары сакталат (год выпуска, модель, цена, цвет)
-        //HashMap тузунуз ключ - машина, маани - машинанын данныйлары
-        //HashMapти толтуруп кайра entrySet деген методун колдонуп баардык элементтерин консольго чыгарыныз.
-        HashMap<Car,InfoCar> carHashMap = new HashMap<>();
-            carHashMap.put(new Car(12222,199),new InfoCar(
-                    LocalDate.of(2003,2,4),"Honda Fit",2000,"white"));
-            carHashMap.put(new Car(122,2344),new InfoCar(
-                    LocalDate.of(2004,2,4),"Toyota Ist",2000,"red"));
+        //City деген класс тузунуз. (code, name, ...)
+        //Эгерде code так сан болсо TreeSetke салыныз.
+        //Аларды чонунан кичинесине караган тартипте чыгарыныз.
 
-        System.out.println(carHashMap.entrySet());
+        Set<City> set = new HashSet<>();
+        set.add(new City(123, "Osh"));
+        set.add(new City(25, "Batken"));
+        set.add(new City(122, "Bishkek"));
+
+        System.out.println(set);
+        set.removeIf(x -> x.getCode() % 2 == 0);
+        Set<City> treeSet = new TreeSet<>(set);
+
+        for (City city : treeSet) {
+                System.out.println(city);
+            }
+        }
     }
-}
+
+
